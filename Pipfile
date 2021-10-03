@@ -1,0 +1,12 @@
+[[source]]
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[requires]
+python_version = "3.9"
+
+[packages]
+pylutron_caseta = {git = "https://github.com/mwohlert/pylutron-caseta.git@dev"}
+
+[dev-packages]
