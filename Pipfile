@@ -10,3 +10,5 @@ python_version = "3.9"
 pylutron_caseta = {git = "https://github.com/mwohlert/pylutron-caseta.git@dev"}
 
 [dev-packages]
+pipenv-setup = "*"
+chardet = "*"
