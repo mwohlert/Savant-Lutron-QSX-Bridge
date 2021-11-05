@@ -12,3 +12,4 @@ pylutron_caseta = {git = "https://github.com/mwohlert/pylutron-caseta.git@dev"}
 [dev-packages]
 pipenv-setup = "*"
 chardet = "*"
+pyinstaller = "*"
