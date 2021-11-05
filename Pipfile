@@ -13,3 +13,6 @@ pylutron_caseta = {git = "https://github.com/mwohlert/pylutron-caseta.git@dev"}
 pipenv-setup = "*"
 chardet = "*"
 pyinstaller = "*"
+pywin32 = {version = "*", sys_platform = "== 'win32'"}
+macholib = {version = "*", sys_platform = "== 'darwin'"}
+
