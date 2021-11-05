@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "1a038ae1258f9da1c1b048a0fc7288bc13ec2dea84ebc5c9ad6fd1d4c0454b7a"
+            "sha256": "22f41321aee15bb9193347507553f3af770f99ebccf159a0e7d668a037e151a6"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -208,6 +208,14 @@
             "markers": "python_version >= '3'",
             "version": "==3.3"
         },
+        "macholib": {
+            "hashes": [
+                "sha256:1542c41da3600509f91c165cb897e7e54c0e74008bd8da5da7ebbee519d593d2",
+                "sha256:885613dd02d3e26dbd2b541eb4cc4ce611b841f827c0958ab98656e478b9e6f6"
+            ],
+            "markers": "sys_platform == 'darwin'",
+            "version": "==1.15.2"
+        },
         "orderedmultidict": {
             "hashes": [
                 "sha256:04070bbb5e87291cc9bfa51df413677faf2141c73c61d2a5f7b26bea3cd882ad",
@@ -315,6 +323,10 @@
             ],
             "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3'",
             "version": "==2.8.2"
+        },
+        "pywin32": {
+            "sys_platform": "== 'win32'",
+            "version": "*"
         },
         "regex": {
             "hashes": [
