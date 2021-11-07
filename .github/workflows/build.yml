@@ -39,6 +39,9 @@ jobs:
       # checkout of cource
       - name: Checkout code
         uses: actions/checkout@v2
+      - name: Set params based on os
+        run: |
+          echo ${{ runner.os }}
       # setup python and pipenv
       - name: Setup python
         uses: actions/setup-python@v2
