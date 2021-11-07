@@ -78,7 +78,7 @@ jobs:
           # target triple.
           asset_name: lutron-bridge-server-${{ github.ref }}-${{ matrix.config.os }}
           # The path to the file you want to upload.
-          asset_path: ./dist/lutron-server-bridge
+          asset_path: ./dist/lutron-bridge-server
           # probably you will need to change it, but most likely you are
           # uploading a binary file
           asset_content_type: application/octet-stream
