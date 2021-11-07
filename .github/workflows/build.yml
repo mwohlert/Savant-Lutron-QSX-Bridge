@@ -60,6 +60,10 @@ jobs:
       - name: Build binary
         run: |
           pipenv run pyinstaller --onefile lutron-bridge-server.py
+      
+      - name: List dist folder
+        run: |
+          ls -la ./dist
 
       # Upload assets
       - name: Upload release assets
