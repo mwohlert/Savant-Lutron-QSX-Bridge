@@ -31,7 +31,9 @@ jobs:
     strategy:
       matrix:
         config:
+          - os: ubuntu-latest
           - os: macos-latest
+          - os: windows-latest
 
     steps:
       # checkout of cource
@@ -60,10 +62,6 @@ jobs:
       - name: Build binary
         run: |
           pipenv run pyinstaller --onefile lutron-bridge-server.py
-      
-      - name: List dist folder
-        run: |
-          ls -la ./dist
 
       # Upload assets
       - name: Upload release assets
@@ -76,7 +74,7 @@ jobs:
           # you like, remember that they need to be different for each platform.
           # You can choose any build matrix parameters. For Rust I use the
           # target triple.
-          asset_name: lutron-bridge-server-${{ github.ref }}-${{ matrix.config.os }}
+          asset_name: lutron-bridge-server-${{ github.event.release.tag_name }}-${{ matrix.config.os }}
           # The path to the file you want to upload.
           asset_path: ./dist/lutron-bridge-server
           # probably you will need to change it, but most likely you are
