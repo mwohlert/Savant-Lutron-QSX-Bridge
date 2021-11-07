@@ -31,9 +31,8 @@ jobs:
     strategy:
       matrix:
         config:
-          - os: ubuntu-latest
           - os: macos-latest
-          - os: windows-latest
+
     steps:
       # checkout of cource
       - name: Checkout code
