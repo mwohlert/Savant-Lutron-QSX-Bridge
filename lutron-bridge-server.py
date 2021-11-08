@@ -59,6 +59,7 @@ def handle_client_connection(client_socket: socket, stop: FunctionType):
                 state = loop.run_until_complete(lutron_command(elements[1].lstrip(), int(elements[2])))
                 if(state >= 0):
                     response = f"~DEVICE,{elements[1]},{state}\r\n"
+                    logging.info(f'Response to Savant: ${response}')
                     client_socket.send(response.encode())
             except Exception as err:
                 logging.error(f'Error occured during lutron processing: {err}')
