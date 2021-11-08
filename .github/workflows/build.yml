@@ -46,7 +46,7 @@ jobs:
         with:
           script: |
             if ("${{ runner.os }}" === "Windows") {
-              console.log(""::set-output name=fileEnding::.exe");
+              console.log("::set-output name=fileEnding::.exe");
             } else {
               console.log("::set-output name=fileEnding::");
             }
