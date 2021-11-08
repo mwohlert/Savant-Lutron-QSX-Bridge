@@ -39,9 +39,16 @@ jobs:
       # checkout of cource
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Set params based on os
+    
+      - name: Set file ending
+        id: set_fileEnding
         run: |
-          echo ${{ runner.os }}
+          if [ "${{ runner.os }}" = "Windows" ]; then
+            echo "::set-output name=fileEnding::.exe"
+          else
+            echo "::set-output name=fileEnding::"
+          fi
+
       # setup python and pipenv
       - name: Setup python
         uses: actions/setup-python@v2
@@ -77,9 +84,9 @@ jobs:
           # you like, remember that they need to be different for each platform.
           # You can choose any build matrix parameters. For Rust I use the
           # target triple.
-          asset_name: lutron-bridge-server-${{ github.event.release.tag_name }}-${{ matrix.config.os }}
+          asset_name: lutron-bridge-server-${{ github.event.release.tag_name }}-${{ runner.os }}${{ steps.set_fileEnding.outpus.fileEnding }}
           # The path to the file you want to upload.
-          asset_path: ./dist/lutron-bridge-server
+          asset_path: ./dist/lutron-bridge-server${{ steps.set_fileEnding.outpus.fileEnding }}
           # probably you will need to change it, but most likely you are
           # uploading a binary file
           asset_content_type: application/octet-stream
