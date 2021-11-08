@@ -106,7 +106,7 @@
         },
         "pylutron-caseta": {
             "git": "https://github.com/mwohlert/pylutron-caseta.git",
-            "ref": "d84601fde3bee20861d253cc8a99f3264efc042c"
+            "ref": "ed6f52cf4832cf202d2c25954474c5cee02ff298"
         }
     },
     "develop": {
