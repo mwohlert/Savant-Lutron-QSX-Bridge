@@ -25,7 +25,7 @@ async def lutron_command(id: str, parameter: int):
     # `Smartbridge` provides an API for interacting with the Caséta bridge.
     bridge = Smartbridge.create_tls(
         "192.168.11.50", "caseta.key", "caseta.crt", "caseta-bridge.crt",
-        systemType="homeworks"
+        systemType_str="homeworks"
     )
 
     state = -1
