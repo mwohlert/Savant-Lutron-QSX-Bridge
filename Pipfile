@@ -7,7 +7,7 @@ name = "pypi"
 python_version = "3.9"
 
 [packages]
-pylutron_caseta = {git = "https://github.com/mwohlert/pylutron-caseta.git@dev"}
+pylutron_caseta = {git = "https://github.com/mwohlert/pylutron-caseta.git@no_verify_certificate"}
 
 [dev-packages]
 pipenv-setup = "*"

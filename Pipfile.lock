@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "638bdbe3a60578bafe80aac5d1e1b2ecbf5f984920b0a5c41b000c0919249e3a"
+            "sha256": "a5ad8a09190193e8d4e448ca5ec6cd88e39dad964d9560f31d2d5d1218434595"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -107,7 +107,7 @@
         },
         "pylutron-caseta": {
             "git": "https://github.com/mwohlert/pylutron-caseta.git",
-            "ref": "8569b8bf0769cbf02a93964a95c938645cc60e80"
+            "ref": "f1f28b3d359d04ae28327c8216aa7cf8b4666f48"
         }
     },
     "develop": {
