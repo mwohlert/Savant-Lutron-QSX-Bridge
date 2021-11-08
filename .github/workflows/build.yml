@@ -41,14 +41,16 @@ jobs:
         uses: actions/checkout@v2
     
       - name: Set file ending
+        uses: actions/github-script@v5
         id: set_fileEnding
-        run: |
-          if [ "${{ runner.os }}" = "Windows" ]; then
-            echo "::set-output name=fileEnding::.exe"
-          else
-            echo "::set-output name=fileEnding::"
-          fi
-
+        with:
+          script: |
+            if ("${{ runner.os }}" === "Windows") {
+              console.log(""::set-output name=fileEnding::.exe");
+            } else {
+              console.log("::set-output name=fileEnding::");
+            }
+ 
       # setup python and pipenv
       - name: Setup python
         uses: actions/setup-python@v2
