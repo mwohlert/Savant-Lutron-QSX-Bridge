@@ -116,7 +116,8 @@ def start_bridge(host: str):
       for thread in client_socket_threads:
         thread.join()
       server.close()
-      exit(0)
+      lutron_loop.close()
+      sys.exit(0)
 
 async def connect_to_lutron(host: str):
 
