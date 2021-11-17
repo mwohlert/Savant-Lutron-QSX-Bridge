@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" manufacturer="Lutron" model="Homeworks QSX" rpm_xml_version="4.1" minimum_component_engine_version="0.0" xsi:noNamespaceSchemaLocation="racepoint_component_profile.xsd" alias="" device_class="Lighting_controller">
+    <notes>(null)
+Version: 3.1, Change: Initial
+
+Version: 4.1, Change: Added status messages
+</notes>
+        <control_interfaces preferred="ip">
+            <ip name_on_component="LAN" response_time_length_ms="500" port="5000" protocol="tcp">
+                <send_prefix type="character"></send_prefix>
+                <send_postfix type="character"></send_postfix>
+            </ip>
+        </control_interfaces>
+        <media_interfaces>
+            <data name_on_component="LAN">
+                <combined_media>
+                    <data_media type="ethernet"></data_media>
+                    <control port="5000"></control>
+                </combined_media>
+            </data>
+            <internal name_on_component="Lighting Controller">
+                <environmental_media></environmental_media>
+                <resource resource_type="ENV_LIGHTINGCONTROLLER_SOURCE"></resource>
+            </internal>
+        </media_interfaces>
+    
+    <logical_component logical_component_name="Lighting_controller">
+        <implementation>
+            <internal name_on_component="Lighting Controller"></internal>
+        </implementation>
+        <status_messages>
+            <status_message name="LEDStatus">
+                <constant type="character">~DEVICE,</constant>
+                <data type="character" terminator="," terminator_type="character">
+                    <update state="LedID" type="integer"></update>
+                </data>
+                <data type="character" terminator_type="end_of_data">
+                    <data_map match_required="yes">
+                        <map key="00">
+                            <update state="IsCurrentLEDOn" type="boolean">false</update>
+                        </map>
+                        <map key="01">
+                            <update state="IsCurrentLEDOn" type="boolean">true</update>
+                        </map>
+                        <map key="0">
+                            <update state="IsCurrentLEDOn" type="boolean">false</update>
+                        </map>
+                        <map key="1">
+                            <update state="IsCurrentLEDOn" type="boolean">true</update>
+                        </map>
+                    </data_map>
+                </data>
+                <append_data_to_state_names state="LedID" note="LEAP LED ID"></append_data_to_state_names>
+            </status_message>
+        </status_messages>
+        <resource_component_actions resource_type="ENV_LIGHTINGCONTROLLER_SOURCE">
+            <action name="ButtonPressAndRelease">
+                <action_argument name="Address1" note="LEAP Button ID"></action_argument>
+                <action_argument name="Address2" note="LEAP Led ID"></action_argument>
+                <action_argument name="Address3" note="not used"></action_argument>
+                <action_argument name="Address4" note="not used"></action_argument>
+                <action_argument name="Address5" note="not used"></action_argument>
+                <action_argument name="Address6" note="not used"></action_argument>
+                <command_interface interface="ip">
+                    <command response_required="no" partial_response="yes">
+                        <command_string type="character">#DEVICE,</command_string>
+                        <parameter_list>
+                            <parameter parameter_data_type="character" action_argument="Address1"></parameter>
+                            <parameter parameter_data_type="character" name="common" parameter_data_width="1" parameter_total_width="1">,</parameter>
+                            <parameter parameter_data_type="character" name="common" parameter_data_width="1" parameter_total_width="1">1</parameter>
+                        </parameter_list>
+                        <delay ms_delay="500"></delay>
+                    </command>
+                    <command response_required="no" partial_response="yes">
+                        <command_string type="character">#DEVICE,</command_string>
+                        <parameter_list>
+                            <parameter parameter_data_type="character" action_argument="Address2"/>
+                            <parameter parameter_data_type="character" name="common" parameter_data_width="1" parameter_total_width="1">,</parameter>
+                            <parameter parameter_data_type="character" name="common" parameter_data_width="1" parameter_total_width="1">4</parameter>
+                        </parameter_list>
+                        <delay ms_delay="300"/>
+                    </command>
+                </command_interface>
+            </action>
+<!--            <action name="ButtonPressAndHold">-->
+<!--                <action_argument name="Address1" note="LEAP Button ID"></action_argument>-->
+<!--                <action_argument name="Address2" note="LEAP Led ID"></action_argument>-->
+<!--                <action_argument name="Address3" note="not used"></action_argument>-->
+<!--                <action_argument name="Address4" note="not used"></action_argument>-->
+<!--                <action_argument name="Address5" note="not used"></action_argument>-->
+<!--                <action_argument name="Address6" note="not used"></action_argument>-->
+<!--                <command_interface interface="ip">-->
+<!--                    <command response_required="no" partial_response="yes">-->
+<!--                        <command_string type="character">#DEVICE,</command_string>-->
+<!--                        <parameter_list>-->
+<!--                            <parameter parameter_data_type="character" action_argument="Address1"></parameter>-->
+<!--                            <parameter parameter_data_type="character" name="common" parameter_data_width="1" parameter_total_width="1">,</parameter>-->
+<!--                            <parameter parameter_data_type="character" name="common" parameter_data_width="1" parameter_total_width="1">2</parameter>-->
+<!--                        </parameter_list>-->
+<!--                        <delay ms_delay="500"></delay>-->
+<!--                    </command>-->
+<!--                </command_interface>-->
+<!--            </action>-->
+<!--            <action name="ButtonPressAndMultitap">-->
+<!--                <action_argument name="Address1" note="LEAP Button ID"></action_argument>-->
+<!--                <action_argument name="Address2" note="LEAP Led ID"></action_argument>-->
+<!--                <action_argument name="Address3" note="not used"></action_argument>-->
+<!--                <action_argument name="Address4" note="not used"></action_argument>-->
+<!--                <action_argument name="Address5" note="not used"></action_argument>-->
+<!--                <action_argument name="Address6" note="not used"></action_argument>-->
+<!--                <command_interface interface="ip">-->
+<!--                    <command response_required="no" partial_response="yes">-->
+<!--                        <command_string type="character">#DEVICE,</command_string>-->
+<!--                        <parameter_list>-->
+<!--                            <parameter parameter_data_type="character" action_argument="Address1"></parameter>-->
+<!--                            <parameter parameter_data_type="character" name="common" parameter_data_width="1" parameter_total_width="1">,</parameter>-->
+<!--                            <parameter parameter_data_type="character" name="common" parameter_data_width="1" parameter_total_width="1">3</parameter>-->
+<!--                        </parameter_list>-->
+<!--                        <delay ms_delay="500"></delay>-->
+<!--                    </command>-->
+<!--                </command_interface>-->
+<!--            </action>-->
+            <action name="QueryLED">
+                <action_argument name="Address1" note="not used"/>
+                <action_argument name="Address2" note="LEAP Led ID"/>
+                <action_argument name="Address3" note="not used"/>
+                <action_argument name="Address4" note="not used"/>
+                <action_argument name="Address5" note="not used"/>
+                <action_argument name="Address6" note="not used"/>
+                <command_interface interface="ip">
+                    <command response_required="no" partial_response="yes">
+                        <command_string type="character">#DEVICE,</command_string>
+                        <parameter_list>
+                            <parameter parameter_data_type="character" action_argument="Address2"/>
+                            <parameter parameter_data_type="character" name="common" parameter_data_width="1" parameter_total_width="1">,</parameter>
+                            <parameter parameter_data_type="character" name="common" parameter_data_width="1" parameter_total_width="1">4</parameter>
+                        </parameter_list>
+                        <delay ms_delay="300"/>
+                    </command>
+                </command_interface>
+            </action>
+            <entity name="Keypad Button" address_components="2">
+                <toggle_button_representation>
+                    <press_action name="ButtonPressAndRelease"></press_action>
+                    <hold_action name="ButtonPressAndHold"></hold_action>
+                    <toggle_action name="ButtonPressAndRelease"></toggle_action>
+                    <osd_press_action name="ButtonPressAndRelease"></osd_press_action>
+                    <osd_hold_action name="ButtonPressAndHold"></osd_hold_action>
+                    <toggleOnUsingState name="IsCurrentLEDOn">
+                        <unique_identifier name="LedID" address_component="2"/>
+                    </toggleOnUsingState>
+                </toggle_button_representation>
+                <query_status_with_action name="QueryLED" period_ms="0">
+                    <with_arg name="Address2" address_component="2"/>
+                </query_status_with_action>
+            </entity>
+        </resource_component_actions>
+    </logical_component>
+</component>

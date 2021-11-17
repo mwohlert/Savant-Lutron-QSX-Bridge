@@ -16,6 +16,7 @@ debug_log = True
 bind_ip = 'localhost'
 bind_port = 5000
 server = None
+bridge : Smartbridge = None
 
 lutron_client_key_name = "caseta.key"
 lutron_client_key_path = Path.cwd().joinpath(lutron_client_key_name)
@@ -27,9 +28,6 @@ lutron_bridge_ca_cert_path = Path.cwd().joinpath(lutron_bridge_ca_cert_name)
 lutron_loop = asyncio.new_event_loop()
 asyncio.set_event_loop(lutron_loop)
 
-bridge : Smartbridge = None
-
-
 logging.basicConfig(
   level=logging.INFO if not debug_log else logging.DEBUG,
   format="%(asctime)s [%(levelname)s] %(message)s",
@@ -38,7 +36,6 @@ logging.basicConfig(
     logging.StreamHandler()
   ]
 )
-
 
 async def lutron_command(id: str, parameter: int):
   state = -1
@@ -139,8 +136,9 @@ if __name__ == '__main__':
     (options, args) = parser.parse_args()
     for r in required_options:
         if options.__dict__[r] is None:
-            parser.error("parameter %s required" % r)
-            parser.print_usage()
+          print(f'Parameter {r} is required')
+          parser.print_help()
+          sys.exit(1)
 
     host = options.host
 

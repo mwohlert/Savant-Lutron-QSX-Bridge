@@ -8,6 +8,7 @@ python_version = "3.9"
 
 [packages]
 pylutron_caseta = {git = "https://github.com/mwohlert/pylutron-caseta.git@no_verify_certificate"}
+pyopenssl = "*"
 
 [dev-packages]
 pipenv-setup = "*"
@@ -17,4 +18,3 @@ pywin32 = {version = "*", sys_platform = "== 'win32'"}
 pywin32-ctypes = {version = "*", sys_platform = "== 'win32'"}
 pefile = {version = "*", sys_platform = "== 'win32'"}
 macholib = {version = "*", sys_platform = "== 'darwin'"}
-
